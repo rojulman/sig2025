@@ -13,8 +13,7 @@ return new class extends Migration
     {
         Schema::create('profil_provinsis', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('provinsi_id')->unsigned()->index();
-            $table->foreign('provinsi_id')->references('id')->on('provinsis')->onDelete('cascade');
+            $table->bigInteger('provinsi_id')->constrained('provinsis')->onDelete('cascade')->index();
             $table->integer('tahun')->default(2024);
             $table->bigInteger('populasi')->default(0);
             $table->bigInteger('gdp')->default(0);
